@@ -43,7 +43,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ message: 'SOL address is required' }, { status: 400 });
     }
 
-    const result = await query('SELECT eth_address FROM wallet_pairs WHERE sol_address = ?', [solAddress]);
+    const result = await query('SELECT eth_address FROM wallet_pairs WHERE sol_address = $1', [solAddress]);
     if (result.length > 0) {
       return NextResponse.json({ ethWallet: result[0].eth_address });
     } else {
