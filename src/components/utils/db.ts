@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import { Database, open } from 'sqlite';
 
-let db;
+let db: Database<sqlite3.Database, sqlite3.Statement>;
 
 async function getDb() {
 if (!db) {

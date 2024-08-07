@@ -244,7 +244,7 @@ const ClaimPage = () => {
             return;
         }
 
-        const message = `Now you certify that you want to receive tokens in the following wallet. Eth wallet: ${ethWallet}, your Solana wallet: ${publicKey.toBase58()}`;
+        const message = `Now you certify that you want to receive tokens in the following wallet. Eth wallet: ${ethWallet}, your Solana wallet: ${publicKey?.toBase58()}`;
         const encodedMessage = new TextEncoder().encode(message);
 
         try {
@@ -255,7 +255,7 @@ const ClaimPage = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    sol: publicKey.toBase58(),
+                    sol: publicKey?.toBase58(),
                     eth: ethWallet,
                     sig: Buffer.from(signature).toString('base64'),
                 }),
